@@ -30,8 +30,8 @@ def  text2mp3(text,filename):
         with open(filename, 'wb') as f:
             f.write(result)
     else:
-        print dict
+        print(dict)
 
 if __name__ == '__main__':
 
-    text2mp3("hello world","hello.mp3")
+    text2mp3("It was the best of times, it was the worst of times","case1.mp3")
