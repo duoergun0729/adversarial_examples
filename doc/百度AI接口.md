@@ -101,6 +101,53 @@ mac下ffmpeg的安装非常简便。
 
 	brew install ffmpeg
 
+# 语音识别
+语音识别是AI落地比较成果的一个领域。
+
+## 申请API Key
+使用语音合成服务之前，需要在百度云的控制台申请服务密钥，填完申请信息后会告知属于你的AppID、API Key和Secret Key。如果已经申请了语音合成，这部分可以跳过。
+
+## 安装语音识别 Python SDK
+安装方式同语音合成Python SDK，最简单的方式还是pip。
+
+	pip install baidu-aip
+
+## 语音识别
+调用语音识别 Python SDK，识别本地的语音文件。
+
+	# 读取文件
+	def get_file_content(filePath):
+	    with open(filePath, 'rb') as fp:
+	        return fp.read()     
+	# 识别本地文件
+    result=client.asr(get_file_content('adversarial01.wav'), 'wav', 16000, {
+        'dev_pid': 1737,
+    })
+    print(result)
+
+其中比较重要的几个参数的含义如下：
+
+- speech，语音文件
+- format，语音文件的格式，支持pcm（不压缩）、wav和amr
+- rate，采样速率，一般为16000
+- dev_pid，可选参数，当需要指定语言类型时可以指定dev_pid，比如1537为普通话，1737为英文
+
+返回结果示例如下，其中需要特殊指出的是result字段，result为识别结果数组，提供若干个候选结果。
+
+	{'corpus_no': '6560879987039805079', 
+	'sn': '223461883401527573910', 'err_no': 0, 
+	'result': ['it was the best of times it was the worst of times', 
+	'if you was the best of times it was the worst of times', 
+	'Edgar was the best of times it was the worst of times', 
+	'if it was the best of times it was the worst of times', 
+	'he was the best of times it was the worst of times', 
+	'I was the best of times it was the worst of times', 
+	'it was the best of times it was the worse of times', 
+	'was the best of times it was the worst of times', 
+	'if he was the best of times it was the worst of times', 
+	'if you was the best of times it was the worse of times'], 
+	'err_msg': 'success.'}
+
 
 # 参考文献
 - http://ai.baidu.com/docs
