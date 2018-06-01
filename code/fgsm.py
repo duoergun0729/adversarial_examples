@@ -14,7 +14,7 @@ pip install h5py
 """
 
 
-def demo4():
+def fgsm():
     model = inception_v3.InceptionV3()
 
     model_input_layer = model.layers[0].input
@@ -40,9 +40,6 @@ def demo4():
     hacked_image = np.copy(original_image)
 
 
-    learning_rate = 0.1
-
-
     cost_function = model_output_layer[0, object_type_to_fake]
 
 
@@ -53,21 +50,28 @@ def demo4():
 
     cost = 0.0
 
+    #参考- Ian J. Goodfellow, Jonathon Shlens & Christian Szegedy，EXPLAINING AND HARNESSING ADVERSARIAL EXAMPLES，arXiv:1412.6572
+    e = 0.007
+    learning_rate = 0.1
+
     index=1
     while cost < 0.60:
 
         #set_learning_phase set_learning_phase() 设置训练模式/测试模式0或1
-        cost, gradients = grab_cost_and_gradients_from_model([hacked_image, 1])
+        cost, gradients = grab_cost_and_gradients_from_model([hacked_image, 0])
 
-
-        hacked_image += gradients * learning_rate
-        #print gradients
+        # fast gradient sign method
+        # EXPLAINING AND HARNESSING ADVERSARIAL EXAMPLES
+        # hacked_image += gradients * learning_rate
+        n = np.sign(gradients)
+        hacked_image += n * e
+        # print gradients
 
         hacked_image = np.clip(hacked_image, max_change_below, max_change_above)
         hacked_image = np.clip(hacked_image, -1.0, 1.0)
 
-        print("batch:{} Cost: {:.8}%".format(index,cost * 100))
-        index+=1
+        print("batch:{} Cost: {:.8}%".format(index, cost * 100))
+        index += 1
 
     img = hacked_image[0]
     img /= 2.
@@ -75,8 +79,8 @@ def demo4():
     img *= 255.
 
     im = Image.fromarray(img.astype(np.uint8))
-    im.save("hacked-pig-image.png")
+    im.save("../picture/hacked-pig-image-fgsm.png")
 
 
 if __name__ == '__main__':
-    demo4()
+    fgsm()
