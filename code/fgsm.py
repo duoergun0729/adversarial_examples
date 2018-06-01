@@ -17,6 +17,12 @@ pip install h5py
 def fgsm():
     model = inception_v3.InceptionV3()
 
+
+    print(model.trainable)
+
+    #设置模型参数不可训练 不影响反向传递
+    model.trainable = False
+
     model_input_layer = model.layers[0].input
     model_output_layer = model.layers[-1].output
 
