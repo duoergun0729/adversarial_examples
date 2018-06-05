@@ -5,6 +5,7 @@ from keras.preprocessing import image
 from keras.applications import inception_v3
 from keras import backend as K
 from PIL import Image
+import matplotlib.pyplot as plt
 
 """
 pip install keras==2.1.5
@@ -13,6 +14,10 @@ pip install Pillow
 pip install h5py
 """
 
+"""
+公式生成图片
+https://www.codecogs.com/latex/eqneditor.php
+"""
 
 def fgsm():
     model = inception_v3.InceptionV3()
@@ -88,5 +93,16 @@ def fgsm():
     im.save("../picture/hacked-pig-image-fgsm.png")
 
 
+
+
+
+def demo():
+    
+
+
+
+
 if __name__ == '__main__':
-    fgsm()
+    #fgsm()
+
+    demo()
