@@ -6,7 +6,7 @@ FGSM最早由Goodfellow在其论文《Explaining and Harnessing Adversarial Exam
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\widetilde{x}=x&plus;\eta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\widetilde{x}=x&plus;\eta" title="\widetilde{x}=x+\eta" /></a>
 
-将修改后的图像输入分类模型中，x与参数矩阵点乘。
+将修改后的图像输入分类模型中，x与参数矩阵相乘。
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=w^{t}\widetilde{x}=w^{t}x&plus;w^{t}\eta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w^{T}\widetilde{x}=w^{T}x&plus;w^{T}\eta" title="w^{T}\widetilde{x}=w^{T}x+w^{T}\eta" /></a>
 
@@ -22,7 +22,87 @@ FGSM最早由Goodfellow在其论文《Explaining and Harnessing Adversarial Exam
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=mn\varepsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?mn\varepsilon" title="mn\varepsilon" /></a>
 
-可见当原始数据的维度越大，攻击的累计效果越明显。
+可见当原始数据的维度越大，攻击的累计效果越明显。以一个更加直观的例子来说明FGSM的原理。假设具有2000个样本，每个数据具有1000维，每维的数据的数值的大小都在0-1之间随机生成，分类标签只有2种。
+
+	 #特征数
+    n_features=1000
+    x,y=datasets.make_classification(n_samples=2000,
+    n_features=n_features,n_classes=2,random_state=random_state)
+    #标准化到0-1之间
+    x= MinMaxScaler().fit_transform(x)
+
+分类模型是一个非常简单的多层感知机，输入层大小为1000，输出层为1，激活函数为sigmoid。
+
+    model = Sequential()
+    model.add(Dense(1,activation='sigmoid',
+    input_shape=(n_features,) ) )
+
+sigmoid函数是非常经典的激活函数，取值范围为0-1，特别适合表示概率分布。
+
+![sigmoid函数](../picture/sigmod函数.png)
+
+损失函数使用最简单的mse，优化方式使用adam，考核的指标为准确度accuracy。
+
+    model.compile(loss='mse',
+                  optimizer='adam',
+                  metrics=['accuracy'])
+
+    model.summary()
+
+完整的模型结果如下。
+
+_________________________________________________________________
+	Layer (type)                 Output Shape              Param #   
+	=================================================================
+	dense_1 (Dense)              (None, 1)                 1001      
+	=================================================================
+	Total params: 1,001
+	Trainable params: 1,001
+	Non-trainable params: 0
+	_________________________________________________________________
+
+批处理大小为16，经过20轮训练。
+
+	model.fit(x,y,epochs=20,batch_size=16)
+
+最终训练结果，损失值稳定在0.17-0.18之间，准确度为80.85%。
+
+	Epoch 18/20
+	2000/2000 [==============================] - 0s 86us/step - loss: 0.1796 - acc: 0.7690
+	Epoch 19/20
+	2000/2000 [==============================] - 0s 86us/step - loss: 0.1711 - acc: 0.8470
+	Epoch 20/20
+	2000/2000 [==============================] - 0s 87us/step - loss: 0.1718 - acc: 0.8085
+
+由于数据是随机生成的，我们取0号举例，
+
+    #获取第0号元素
+    x0=x[0]
+    y0=y[0]
+    x0 = np.expand_dims(x0, axis=0)
+    y0_predict = model.predict(x0)
+
+0号数据的标签为0，内容截取如下，预测的值为0.296199。
+
+	[[ 0.4860574   0.42001144  0.27524764  0.73457147  0.36324722  0.67289411
+	0.63321704  0.71295512  0.43134776  0.74441116  0.71009115  0.6578975
+	0.72477239  0.55870978  0.54932412  0.37136643  0.65307521  0.46990842
+
+获取x0对应的梯度。
+
+    e = 0.1
+    cost, gradients = grab_cost_and_gradients_from_model([x0, 0])
+    n = np.sign(gradients)
+    x0 += n * e
+
+当e取0.1时，FGSM计算的最终偏移值绝对值为0.1，即在每个维度增加或者减少0.1，具体值截取如下。
+
+	[[-0.1 -0.1 -0.1  0.1 -0.1  0.1  0.1  0.1  0.1  0.1  0.1  0.1  0.1 -0.1
+	  -0.1 -0.1  0.1 -0.1 -0.1 -0.1  0.1 -0.1 -0.1  0.1 -0.1  0.1  0.1  0.1
+	  -0.1 -0.1  0.1 -0.1 -0.1 -0.1  0.1 -0.1  0.1  0.1  0.1 -0.1  0.1  0.1
+	  -0.1 -0.1 -0.1  0.1  0.1  0.1 -0.1 -0.1  0.1  0.1  0.1  0.1  0.1 -0.1
+
+叠加完得到新的x0值，由于修改量较小，可以认为对原始数据修改不大，但是预测值达到了0.984356，可以认为标签从0变成了1。
 
 ## 攻击图像识别模型
 以攻击InceptionV3模型为例，介绍生成攻击样本的基本原理。Keras内置了这个模型，我们直接使用就可以了。从模型中直接获取第一层的输入作为输入层，最后一层的输出为输出层。
@@ -99,3 +179,4 @@ Ian Goodfellow在他的论文《Adversarial examples in the physical world》中
 - Ian J. Goodfellow, Jonathon Shlens & Christian Szegedy，Explaining and Harnessing Adversarial Examples，arXiv:1412.6572
 - Alexey Kurakin, Ian Goodfellow, Samy Bengio，Adversarial examples in the physical world，arXiv:1607.02533
 - https://baike.baidu.com/item/sign/115763
+- 刘焱，《web安全之强化学习与GAN》，机械工业出版社

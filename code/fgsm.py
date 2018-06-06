@@ -6,6 +6,11 @@ from keras.applications import inception_v3
 from keras import backend as K
 from PIL import Image
 import matplotlib.pyplot as plt
+from sklearn import datasets
+from keras.models import Sequential
+from keras.layers import Dense, Dropout
+from keras.layers import Conv1D,GlobalMaxPooling1D,Activation,Input,MaxPooling1D,Flatten,concatenate,Embedding
+from sklearn.preprocessing import MinMaxScaler
 
 """
 pip install keras==2.1.5
@@ -97,7 +102,68 @@ def fgsm():
 
 
 def demo():
-    
+    #设置随机数种子
+    random_state = 666
+
+    #特征数
+    n_features=1000
+
+    x,y=datasets.make_classification(n_samples=2000, n_features=n_features,
+                            n_classes=2,random_state=random_state)
+
+    #标准化到0-1之间
+    x= MinMaxScaler().fit_transform(x)
+
+    model = Sequential()
+    model.add(Dense(1, activation='sigmoid',input_shape=(n_features,) ) )
+
+    model.compile(loss='mse',
+                  optimizer='adam',
+                  metrics=['accuracy'])
+
+    model.summary()
+
+    model.fit(x,y,epochs=20,batch_size=16)
+
+    #获取第0号元素
+    x0=x[0]
+    y0=y[0]
+
+    print(x0)
+
+    x0 = np.expand_dims(x0, axis=0)
+
+    y0_predict = model.predict(x0)
+
+    print("y0=%d y0_predict=%.6f" % (y0,y0_predict))
+
+
+
+    model_input_layer = model.layers[0].input
+    model_output_layer = model.layers[-1].output
+
+
+    cost_function = model_output_layer
+
+    gradient_function = K.gradients(cost_function, model_input_layer)[0]
+
+    grab_cost_and_gradients_from_model = K.function([model_input_layer, K.learning_phase()],
+                                                    [cost_function, gradient_function])
+
+    e = 0.1
+
+    cost, gradients = grab_cost_and_gradients_from_model([x0, 0])
+
+    n = np.sign(gradients)
+    x0 += n * e
+
+    print(x0)
+    print(n*e)
+
+
+    y1_predict = model.predict(x0)
+
+    print("y0_predict=%.6f" % (y1_predict))
 
 
 
