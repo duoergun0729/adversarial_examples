@@ -81,6 +81,18 @@ attack.py攻击脚本的调用方式为，
 	
 	0 directories, 4 files
 
+## 安装命令行工具
+到DeepSpeech的代码目录下，执行安装脚本即可。
+
+	cd DeepSpeech
+	python util/taskcluster.py --target .
+
+如果没有安装命令行工具，可能会出现如下报错信息。
+
+
+	ERROR: The decoder library file does not exist. Make sure you have downloaded or built the native client binaries and pass the appropriate path to the binaries in the --decoder_library_path parameter.
+
+
 ## 生成checkpoint文件
 下载了下载指定版本模型参数文件后，需要针对该文件生成对应的checkpoint文件。在make_checkpoint.py中指定对应的模型参数文件的名称。
 
