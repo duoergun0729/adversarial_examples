@@ -1,13 +1,17 @@
 # 安装advbox
 ## 安装paddlepaddle
 ### 创建paddlepaddle环境
-通常使用anaconda创建不同的python环境，解决python多版本不兼容的问题。
+通常使用anaconda创建不同的python环境，解决python多版本不兼容的问题。目前advbox仅支持python2.*。
 
 	conda create --name pp python=2.7
 	
 通过下列命令激活paddlepaddle环境	
 	
 	source activate pp
+	
+如果没有安装anaconda，可以通过下载安装脚本并执行。
+
+	wget https://repo.anaconda.com/archive/Anaconda2-5.2.0-Linux-x86_64.sh
 	
 ### 安装paddlepaddle包
 最简化的安装可以直接使用pip工具。
