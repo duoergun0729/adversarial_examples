@@ -1,7 +1,7 @@
 # 安装advbox
 ## 安装paddlepaddle
 ### 创建paddlepaddle环境
-通常使用anaconda创建不同的python环境，解决python多版本不兼容的问题。目前advbox仅支持python2.*。
+通常使用anaconda创建不同的python环境，解决python多版本不兼容的问题。目前advbox仅支持python 2.*, paddlepaddle 0.12以上。
 
 	conda create --name pp python=2.7
 	
@@ -20,11 +20,28 @@
 
 如果有特殊需求希望指定版本进行安装，可以使用参数。
 
-	pip install paddlepaddle==0.11.0
+	pip install paddlepaddle==0.12.0
 
 如果希望使用GPU加速训练过程，可以安装GPU版本。
 
 	pip install paddlepaddle-gpu
+
+需要特别指出的是，paddlepaddle-gpu针对不同的cuDNN和CUDA具有不同的编译版本。一百度云上的GPU服务器为例，CUDA为8.0.61，cuDNN为5.0.21，对应的编译版本为paddlepaddle-gpu为paddlepaddle-gpu==0.14.0.post85。
+
+	pip install paddlepaddle-gpu==0.14.0.post85
+
+查看服务器的cuDNN和CUDA版本的方法为：
+
+	#cuda 版本
+	cat /usr/local/cuda/version.txt
+	#cudnn 版本 
+	cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+	#或者
+	cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
+
+详细支持列表可以参考链接。
+
+	http://paddlepaddle.org/docs/0.14.0/documentation/fluid/zh/new_docs/beginners_guide/install/install_doc.html
 
 ## 安装advbox
 advbox以paddlepaddle的models形式出现，可以直接同步paddlepaddle的models代码。
@@ -107,4 +124,5 @@ advbox的目录结果如下所示，其中示例代码在tutorials目录下。
 # 参考文献
 
 - http://www.paddlepaddle.org/docs/develop/documentation/en/build_and_install/pip_install_en.html
+- http://paddlepaddle.org/docs/0.14.0/documentation/fluid/zh/new_docs/beginners_guide/install/install_doc.html
 - https://github.com/PaddlePaddle/models/tree/develop/fluid/adversarial
