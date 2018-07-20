@@ -48,7 +48,10 @@ mac下安装paddlepaddle包方式比较特殊，相当于在docker镜像直接�
 
 	docker pull paddlepaddle/paddle
 	docker run --name paddle-test -v $PWD:/paddle --network=host -it paddlepaddle/paddle /bin/bash
-	
+
+如果mac上没有装docker，需要提前下载并安装。
+
+	https://download.docker.com/mac/stable/Docker.dmg
 	
 ## 安装advbox
 advbox以paddlepaddle的models形式出现，可以直接同步paddlepaddle的models代码。
@@ -133,4 +136,3 @@ advbox的目录结果如下所示，其中示例代码在tutorials目录下。
 - http://www.paddlepaddle.org/docs/develop/documentation/en/build_and_install/pip_install_en.html
 - http://paddlepaddle.org/docs/0.14.0/documentation/fluid/zh/new_docs/beginners_guide/install/install_doc.html
 - https://github.com/PaddlePaddle/models/tree/develop/fluid/adversarial
-- 
