@@ -53,6 +53,20 @@ mac下安装paddlepaddle包方式比较特殊，相当于在docker镜像直接�
 
 	https://download.docker.com/mac/stable/Docker.dmg
 	
+## 多GPU支持
+部分场景需要使用多GPU加速，这个时候需要安装nccl2库，对应的下载地址为：
+
+	https://developer.nvidia.com/nccl/nccl-download
+
+下载对应的版本，以百度云为例，需要下载安装NCCL 2.2.13 for Ubuntu 16.04 and CUDA 8。下载完毕后，进行安装。
+
+	apt-get install libnccl2=2.2.13-1+cuda8.0 libnccl-dev=2.2.13-1+cuda8.0
+	
+设置环境变量。
+
+	export NCCL_P2P_DISABLE=1  
+	export NCCL_IB_DISABLE=1
+
 ## 安装advbox
 advbox以paddlepaddle的models形式出现，可以直接同步paddlepaddle的models代码。
 
