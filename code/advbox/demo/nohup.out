@@ -1,0 +1,602 @@
+
+Pass 0, Batch 0, Cost 4.160364, Acc 0.101562
+...................................................................................................
+Pass 100, Batch 0, Cost 1.688347, Acc 0.414062
+...................................................................................................
+Pass 200, Batch 0, Cost 1.297957, Acc 0.531250
+...................................................................................................
+Pass 300, Batch 0, Cost 1.258502, Acc 0.539062
+.........................................................................................
+Test with Pass 0, Loss 1.3, Acc 0.54
+
+Pass 0, Batch 1, Cost 1.122776, Acc 0.609375
+...................................................................................................
+Pass 100, Batch 1, Cost 1.146532, Acc 0.617188
+...................................................................................................
+Pass 200, Batch 1, Cost 1.018318, Acc 0.648438
+...................................................................................................
+Pass 300, Batch 1, Cost 0.849833, Acc 0.726562
+.........................................................................................
+Test with Pass 1, Loss 1.0, Acc 0.64
+
+Pass 0, Batch 2, Cost 0.933735, Acc 0.648438
+...................................................................................................
+Pass 100, Batch 2, Cost 0.835836, Acc 0.718750
+...................................................................................................
+Pass 200, Batch 2, Cost 0.813626, Acc 0.656250
+...................................................................................................
+Pass 300, Batch 2, Cost 0.878306, Acc 0.664062
+.........................................................................................
+Test with Pass 2, Loss 0.85, Acc 0.71
+
+Pass 0, Batch 3, Cost 0.595187, Acc 0.773438
+...................................................................................................
+Pass 100, Batch 3, Cost 0.591229, Acc 0.781250
+...................................................................................................
+Pass 200, Batch 3, Cost 0.697202, Acc 0.726562
+...................................................................................................
+Pass 300, Batch 3, Cost 0.632576, Acc 0.781250
+.........................................................................................
+Test with Pass 3, Loss 0.81, Acc 0.73
+
+Pass 0, Batch 4, Cost 0.646528, Acc 0.757812
+...................................................................................................
+Pass 100, Batch 4, Cost 0.630009, Acc 0.757812
+...................................................................................................
+Pass 200, Batch 4, Cost 0.533124, Acc 0.835938
+...................................................................................................
+Pass 300, Batch 4, Cost 0.732097, Acc 0.726562
+.........................................................................................
+Test with Pass 4, Loss 0.75, Acc 0.74
+
+Pass 0, Batch 5, Cost 0.481035, Acc 0.867188
+...................................................................................................
+Pass 100, Batch 5, Cost 0.527678, Acc 0.812500
+...................................................................................................
+Pass 200, Batch 5, Cost 0.495355, Acc 0.812500
+...................................................................................................
+Pass 300, Batch 5, Cost 0.455192, Acc 0.812500
+.........................................................................................
+Test with Pass 5, Loss 0.65, Acc 0.78
+
+Pass 0, Batch 6, Cost 0.353133, Acc 0.851562
+...................................................................................................
+Pass 100, Batch 6, Cost 0.339896, Acc 0.914062
+...................................................................................................
+Pass 200, Batch 6, Cost 0.440729, Acc 0.851562
+...................................................................................................
+Pass 300, Batch 6, Cost 0.456317, Acc 0.812500
+.........................................................................................
+Test with Pass 6, Loss 0.78, Acc 0.74
+
+Pass 0, Batch 7, Cost 0.270241, Acc 0.906250
+...................................................................................................
+Pass 100, Batch 7, Cost 0.257223, Acc 0.921875
+...................................................................................................
+Pass 200, Batch 7, Cost 0.379607, Acc 0.882812
+...................................................................................................
+Pass 300, Batch 7, Cost 0.301437, Acc 0.890625
+.........................................................................................
+Test with Pass 7, Loss 0.71, Acc 0.77
+
+Pass 0, Batch 8, Cost 0.391490, Acc 0.859375
+...................................................................................................
+Pass 100, Batch 8, Cost 0.288023, Acc 0.898438
+...................................................................................................
+Pass 200, Batch 8, Cost 0.356288, Acc 0.859375
+...................................................................................................
+Pass 300, Batch 8, Cost 0.381218, Acc 0.828125
+.........................................................................................
+Test with Pass 8, Loss 0.69, Acc 0.78
+
+Pass 0, Batch 9, Cost 0.307757, Acc 0.906250
+...................................................................................................
+Pass 100, Batch 9, Cost 0.309269, Acc 0.906250
+...................................................................................................
+Pass 200, Batch 9, Cost 0.271755, Acc 0.914062
+...................................................................................................
+Pass 300, Batch 9, Cost 0.447486, Acc 0.851562
+.........................................................................................
+Test with Pass 9, Loss 0.96, Acc 0.74
+attack success, original_label=3, adversarial_label=5, count=1
+attack success, original_label=8, adversarial_label=3, count=2
+attack success, original_label=8, adversarial_label=3, count=3
+attack success, original_label=0, adversarial_label=3, count=4
+attack success, original_label=6, adversarial_label=3, count=5
+attack success, original_label=6, adversarial_label=3, count=6
+attack success, original_label=1, adversarial_label=3, count=7
+attack success, original_label=6, adversarial_label=3, count=8
+attack success, original_label=3, adversarial_label=2, count=9
+attack success, original_label=1, adversarial_label=3, count=10
+attack success, original_label=0, adversarial_label=3, count=11
+attack success, original_label=9, adversarial_label=3, count=12
+attack success, original_label=5, adversarial_label=3, count=13
+attack success, original_label=7, adversarial_label=3, count=14
+attack success, original_label=9, adversarial_label=3, count=15
+attack success, original_label=8, adversarial_label=3, count=16
+attack success, original_label=5, adversarial_label=3, count=17
+attack success, original_label=7, adversarial_label=3, count=18
+attack success, original_label=8, adversarial_label=3, count=19
+attack success, original_label=6, adversarial_label=3, count=20
+attack success, original_label=7, adversarial_label=3, count=21
+attack success, original_label=0, adversarial_label=3, count=22
+attack success, original_label=4, adversarial_label=3, count=23
+attack success, original_label=9, adversarial_label=3, count=24
+attack success, original_label=5, adversarial_label=3, count=25
+attack success, original_label=2, adversarial_label=3, count=26
+attack success, original_label=4, adversarial_label=3, count=27
+attack success, original_label=0, adversarial_label=3, count=28
+attack success, original_label=9, adversarial_label=3, count=29
+attack success, original_label=6, adversarial_label=3, count=30
+attack success, original_label=6, adversarial_label=3, count=31
+attack success, original_label=5, adversarial_label=3, count=32
+attack success, original_label=4, adversarial_label=3, count=33
+attack success, original_label=5, adversarial_label=3, count=34
+attack success, original_label=9, adversarial_label=3, count=35
+attack success, original_label=2, adversarial_label=3, count=36
+attack success, original_label=4, adversarial_label=3, count=37
+attack success, original_label=1, adversarial_label=3, count=38
+attack success, original_label=9, adversarial_label=3, count=39
+attack success, original_label=5, adversarial_label=3, count=40
+attack success, original_label=4, adversarial_label=3, count=41
+attack success, original_label=6, adversarial_label=3, count=42
+attack success, original_label=5, adversarial_label=3, count=43
+attack success, original_label=6, adversarial_label=3, count=44
+attack success, original_label=0, adversarial_label=3, count=45
+attack success, original_label=9, adversarial_label=3, count=46
+attack success, original_label=3, adversarial_label=8, count=47
+attack success, original_label=9, adversarial_label=3, count=48
+attack success, original_label=7, adversarial_label=3, count=49
+attack success, original_label=6, adversarial_label=3, count=50
+attack success, original_label=9, adversarial_label=3, count=51
+attack success, original_label=8, adversarial_label=3, count=52
+attack success, original_label=0, adversarial_label=3, count=53
+attack success, original_label=3, adversarial_label=1, count=54
+attack success, original_label=8, adversarial_label=3, count=55
+attack success, original_label=8, adversarial_label=3, count=56
+attack success, original_label=7, adversarial_label=3, count=57
+attack success, original_label=7, adversarial_label=3, count=58
+attack success, original_label=4, adversarial_label=3, count=59
+attack success, original_label=6, adversarial_label=3, count=60
+attack success, original_label=7, adversarial_label=3, count=61
+attack success, original_label=3, adversarial_label=5, count=62
+attack success, original_label=6, adversarial_label=3, count=63
+attack success, original_label=3, adversarial_label=6, count=64
+attack success, original_label=6, adversarial_label=3, count=65
+attack success, original_label=2, adversarial_label=3, count=66
+attack success, original_label=1, adversarial_label=3, count=67
+attack success, original_label=2, adversarial_label=3, count=68
+attack success, original_label=3, adversarial_label=8, count=69
+attack success, original_label=7, adversarial_label=3, count=70
+attack success, original_label=2, adversarial_label=3, count=71
+attack success, original_label=6, adversarial_label=3, count=72
+attack success, original_label=8, adversarial_label=3, count=73
+attack success, original_label=8, adversarial_label=3, count=74
+attack success, original_label=0, adversarial_label=3, count=75
+attack success, original_label=2, adversarial_label=3, count=76
+attack success, original_label=9, adversarial_label=3, count=77
+attack success, original_label=3, adversarial_label=1, count=78
+attack success, original_label=3, adversarial_label=8, count=79
+attack success, original_label=8, adversarial_label=3, count=80
+attack success, original_label=8, adversarial_label=3, count=81
+attack success, original_label=1, adversarial_label=3, count=82
+attack success, original_label=1, adversarial_label=3, count=83
+attack success, original_label=7, adversarial_label=3, count=84
+attack success, original_label=2, adversarial_label=3, count=85
+attack success, original_label=5, adversarial_label=3, count=86
+attack success, original_label=2, adversarial_label=3, count=87
+attack success, original_label=7, adversarial_label=3, count=88
+attack success, original_label=8, adversarial_label=3, count=89
+attack success, original_label=9, adversarial_label=3, count=90
+attack success, original_label=0, adversarial_label=3, count=91
+attack success, original_label=3, adversarial_label=1, count=92
+attack success, original_label=8, adversarial_label=3, count=93
+attack success, original_label=6, adversarial_label=3, count=94
+attack success, original_label=4, adversarial_label=3, count=95
+attack success, original_label=6, adversarial_label=3, count=96
+attack success, original_label=6, adversarial_label=3, count=97
+attack success, original_label=0, adversarial_label=3, count=98
+attack success, original_label=0, adversarial_label=3, count=99
+attack success, original_label=7, adversarial_label=3, count=100
+attack success, original_label=4, adversarial_label=3, count=101
+attack success, original_label=5, adversarial_label=3, count=102
+attack success, original_label=6, adversarial_label=3, count=103
+attack success, original_label=3, adversarial_label=6, count=104
+attack success, original_label=1, adversarial_label=3, count=105
+attack success, original_label=1, adversarial_label=3, count=106
+attack success, original_label=3, adversarial_label=1, count=107
+attack success, original_label=6, adversarial_label=3, count=108
+attack success, original_label=8, adversarial_label=3, count=109
+attack success, original_label=7, adversarial_label=3, count=110
+attack success, original_label=4, adversarial_label=3, count=111
+attack success, original_label=0, adversarial_label=3, count=112
+attack success, original_label=6, adversarial_label=3, count=113
+attack success, original_label=2, adversarial_label=3, count=114
+attack success, original_label=1, adversarial_label=3, count=115
+attack success, original_label=3, adversarial_label=7, count=116
+attack success, original_label=0, adversarial_label=3, count=117
+attack success, original_label=4, adversarial_label=3, count=118
+attack success, original_label=2, adversarial_label=3, count=119
+attack success, original_label=7, adversarial_label=3, count=120
+attack success, original_label=8, adversarial_label=3, count=121
+attack success, original_label=3, adversarial_label=6, count=122
+attack success, original_label=1, adversarial_label=3, count=123
+attack success, original_label=2, adversarial_label=3, count=124
+attack success, original_label=8, adversarial_label=3, count=125
+attack success, original_label=0, adversarial_label=3, count=126
+attack success, original_label=8, adversarial_label=3, count=127
+attack success, original_label=3, adversarial_label=1, count=128
+attack success, original_label=5, adversarial_label=3, count=129
+attack success, original_label=2, adversarial_label=3, count=130
+attack success, original_label=4, adversarial_label=3, count=131
+attack success, original_label=1, adversarial_label=3, count=132
+attack success, original_label=8, adversarial_label=3, count=133
+attack success, original_label=9, adversarial_label=3, count=134
+attack success, original_label=1, adversarial_label=3, count=135
+attack success, original_label=2, adversarial_label=3, count=136
+attack success, original_label=9, adversarial_label=3, count=137
+attack success, original_label=7, adversarial_label=3, count=138
+attack success, original_label=2, adversarial_label=3, count=139
+attack success, original_label=9, adversarial_label=3, count=140
+attack success, original_label=6, adversarial_label=3, count=141
+attack success, original_label=5, adversarial_label=3, count=142
+attack success, original_label=6, adversarial_label=3, count=143
+attack success, original_label=3, adversarial_label=7, count=144
+attack success, original_label=8, adversarial_label=3, count=145
+attack success, original_label=7, adversarial_label=3, count=146
+attack success, original_label=6, adversarial_label=3, count=147
+attack success, original_label=2, adversarial_label=3, count=148
+attack success, original_label=5, adversarial_label=3, count=149
+attack success, original_label=2, adversarial_label=3, count=150
+attack success, original_label=8, adversarial_label=3, count=151
+attack success, original_label=9, adversarial_label=3, count=152
+attack success, original_label=6, adversarial_label=3, count=153
+attack success, original_label=0, adversarial_label=3, count=154
+attack success, original_label=0, adversarial_label=3, count=155
+attack success, original_label=5, adversarial_label=3, count=156
+attack success, original_label=2, adversarial_label=3, count=157
+attack success, original_label=9, adversarial_label=3, count=158
+attack success, original_label=5, adversarial_label=3, count=159
+attack success, original_label=4, adversarial_label=3, count=160
+attack success, original_label=2, adversarial_label=3, count=161
+attack success, original_label=1, adversarial_label=3, count=162
+attack success, original_label=6, adversarial_label=3, count=163
+attack success, original_label=6, adversarial_label=3, count=164
+attack success, original_label=8, adversarial_label=3, count=165
+attack success, original_label=4, adversarial_label=3, count=166
+attack success, original_label=8, adversarial_label=3, count=167
+attack success, original_label=4, adversarial_label=3, count=168
+attack success, original_label=5, adversarial_label=3, count=169
+attack success, original_label=0, adversarial_label=3, count=170
+attack success, original_label=9, adversarial_label=3, count=171
+attack success, original_label=9, adversarial_label=3, count=172
+attack success, original_label=9, adversarial_label=3, count=173
+attack success, original_label=8, adversarial_label=3, count=174
+attack success, original_label=9, adversarial_label=3, count=175
+attack success, original_label=9, adversarial_label=3, count=176
+attack success, original_label=3, adversarial_label=2, count=177
+attack success, original_label=7, adversarial_label=3, count=178
+attack success, original_label=5, adversarial_label=3, count=179
+attack success, original_label=0, adversarial_label=3, count=180
+attack success, original_label=0, adversarial_label=3, count=181
+attack success, original_label=5, adversarial_label=3, count=182
+attack success, original_label=2, adversarial_label=3, count=183
+attack success, original_label=2, adversarial_label=3, count=184
+attack success, original_label=3, adversarial_label=8, count=185
+attack success, original_label=8, adversarial_label=3, count=186
+attack success, original_label=6, adversarial_label=3, count=187
+attack success, original_label=3, adversarial_label=8, count=188
+attack success, original_label=4, adversarial_label=3, count=189
+attack success, original_label=0, adversarial_label=3, count=190
+attack success, original_label=5, adversarial_label=3, count=191
+attack success, original_label=8, adversarial_label=3, count=192
+attack success, original_label=0, adversarial_label=3, count=193
+attack success, original_label=1, adversarial_label=3, count=194
+attack success, original_label=7, adversarial_label=3, count=195
+attack success, original_label=2, adversarial_label=3, count=196
+attack success, original_label=8, adversarial_label=3, count=197
+attack success, original_label=8, adversarial_label=3, count=198
+attack success, original_label=7, adversarial_label=3, count=199
+attack success, original_label=8, adversarial_label=3, count=200
+attack success, original_label=5, adversarial_label=3, count=201
+attack success, original_label=1, adversarial_label=3, count=202
+attack success, original_label=8, adversarial_label=3, count=203
+attack success, original_label=7, adversarial_label=3, count=204
+attack success, original_label=1, adversarial_label=3, count=205
+attack success, original_label=3, adversarial_label=0, count=206
+attack success, original_label=0, adversarial_label=3, count=207
+attack success, original_label=5, adversarial_label=3, count=208
+attack success, original_label=7, adversarial_label=3, count=209
+attack success, original_label=9, adversarial_label=3, count=210
+attack success, original_label=7, adversarial_label=3, count=211
+attack success, original_label=4, adversarial_label=3, count=212
+attack success, original_label=5, adversarial_label=3, count=213
+attack success, original_label=9, adversarial_label=3, count=214
+attack success, original_label=8, adversarial_label=3, count=215
+attack success, original_label=0, adversarial_label=3, count=216
+attack success, original_label=7, adversarial_label=3, count=217
+attack success, original_label=9, adversarial_label=3, count=218
+attack success, original_label=8, adversarial_label=3, count=219
+attack success, original_label=2, adversarial_label=3, count=220
+attack success, original_label=7, adversarial_label=3, count=221
+attack success, original_label=6, adversarial_label=3, count=222
+attack success, original_label=9, adversarial_label=3, count=223
+attack success, original_label=4, adversarial_label=3, count=224
+attack success, original_label=3, adversarial_label=0, count=225
+attack success, original_label=9, adversarial_label=3, count=226
+attack success, original_label=6, adversarial_label=3, count=227
+attack success, original_label=4, adversarial_label=3, count=228
+attack success, original_label=7, adversarial_label=3, count=229
+attack success, original_label=6, adversarial_label=3, count=230
+attack success, original_label=5, adversarial_label=3, count=231
+attack success, original_label=1, adversarial_label=3, count=232
+attack success, original_label=5, adversarial_label=3, count=233
+attack success, original_label=8, adversarial_label=3, count=234
+attack success, original_label=8, adversarial_label=3, count=235
+attack success, original_label=0, adversarial_label=3, count=236
+attack success, original_label=4, adversarial_label=3, count=237
+attack success, original_label=0, adversarial_label=3, count=238
+attack success, original_label=5, adversarial_label=3, count=239
+attack success, original_label=5, adversarial_label=3, count=240
+attack success, original_label=1, adversarial_label=3, count=241
+attack success, original_label=1, adversarial_label=3, count=242
+attack success, original_label=8, adversarial_label=3, count=243
+attack success, original_label=9, adversarial_label=3, count=244
+attack success, original_label=0, adversarial_label=3, count=245
+attack success, original_label=3, adversarial_label=4, count=246
+attack success, original_label=1, adversarial_label=3, count=247
+attack success, original_label=9, adversarial_label=3, count=248
+attack success, original_label=2, adversarial_label=3, count=249
+attack success, original_label=2, adversarial_label=3, count=250
+attack success, original_label=5, adversarial_label=3, count=251
+attack success, original_label=3, adversarial_label=7, count=252
+attack success, original_label=9, adversarial_label=3, count=253
+attack success, original_label=9, adversarial_label=3, count=254
+attack success, original_label=4, adversarial_label=3, count=255
+attack success, original_label=0, adversarial_label=3, count=256
+attack success, original_label=3, adversarial_label=6, count=257
+attack success, original_label=0, adversarial_label=3, count=258
+attack success, original_label=0, adversarial_label=3, count=259
+attack success, original_label=9, adversarial_label=3, count=260
+attack success, original_label=8, adversarial_label=3, count=261
+attack success, original_label=1, adversarial_label=3, count=262
+attack success, original_label=5, adversarial_label=3, count=263
+attack success, original_label=7, adversarial_label=3, count=264
+attack success, original_label=0, adversarial_label=3, count=265
+attack success, original_label=8, adversarial_label=3, count=266
+attack success, original_label=2, adversarial_label=3, count=267
+attack success, original_label=4, adversarial_label=3, count=268
+attack success, original_label=7, adversarial_label=3, count=269
+attack success, original_label=0, adversarial_label=3, count=270
+attack success, original_label=2, adversarial_label=3, count=271
+attack success, original_label=3, adversarial_label=9, count=272
+attack success, original_label=6, adversarial_label=3, count=273
+attack success, original_label=3, adversarial_label=5, count=274
+attack success, original_label=8, adversarial_label=3, count=275
+attack success, original_label=5, adversarial_label=3, count=276
+attack success, original_label=0, adversarial_label=3, count=277
+attack success, original_label=3, adversarial_label=9, count=278
+attack success, original_label=4, adversarial_label=3, count=279
+attack success, original_label=3, adversarial_label=5, count=280
+attack success, original_label=9, adversarial_label=3, count=281
+attack success, original_label=0, adversarial_label=3, count=282
+attack success, original_label=6, adversarial_label=3, count=283
+attack success, original_label=1, adversarial_label=3, count=284
+attack success, original_label=0, adversarial_label=3, count=285
+attack success, original_label=9, adversarial_label=3, count=286
+attack success, original_label=1, adversarial_label=3, count=287
+attack success, original_label=0, adversarial_label=3, count=288
+attack success, original_label=7, adversarial_label=3, count=289
+attack success, original_label=9, adversarial_label=3, count=290
+attack success, original_label=1, adversarial_label=3, count=291
+attack success, original_label=2, adversarial_label=3, count=292
+attack success, original_label=6, adversarial_label=3, count=293
+attack success, original_label=9, adversarial_label=3, count=294
+attack success, original_label=3, adversarial_label=9, count=295
+attack success, original_label=4, adversarial_label=3, count=296
+attack success, original_label=6, adversarial_label=3, count=297
+attack success, original_label=0, adversarial_label=3, count=298
+attack success, original_label=0, adversarial_label=3, count=299
+attack success, original_label=6, adversarial_label=3, count=300
+attack success, original_label=6, adversarial_label=3, count=301
+attack success, original_label=6, adversarial_label=3, count=302
+attack success, original_label=3, adversarial_label=4, count=303
+attack success, original_label=2, adversarial_label=3, count=304
+attack success, original_label=6, adversarial_label=3, count=305
+attack success, original_label=1, adversarial_label=3, count=306
+attack success, original_label=8, adversarial_label=3, count=307
+attack success, original_label=2, adversarial_label=3, count=308
+attack success, original_label=1, adversarial_label=3, count=309
+attack success, original_label=6, adversarial_label=3, count=310
+attack success, original_label=8, adversarial_label=3, count=311
+attack success, original_label=6, adversarial_label=3, count=312
+attack success, original_label=8, adversarial_label=3, count=313
+attack success, original_label=0, adversarial_label=3, count=314
+attack success, original_label=4, adversarial_label=3, count=315
+attack success, original_label=0, adversarial_label=3, count=316
+attack success, original_label=7, adversarial_label=3, count=317
+attack success, original_label=7, adversarial_label=3, count=318
+attack success, original_label=5, adversarial_label=3, count=319
+attack success, original_label=5, adversarial_label=3, count=320
+attack success, original_label=3, adversarial_label=0, count=321
+attack success, original_label=5, adversarial_label=3, count=322
+attack success, original_label=2, adversarial_label=3, count=323
+attack success, original_label=3, adversarial_label=7, count=324
+attack success, original_label=4, adversarial_label=3, count=325
+attack success, original_label=1, adversarial_label=3, count=326
+attack success, original_label=7, adversarial_label=3, count=327
+attack success, original_label=5, adversarial_label=3, count=328
+attack success, original_label=4, adversarial_label=3, count=329
+attack success, original_label=6, adversarial_label=3, count=330
+attack success, original_label=1, adversarial_label=3, count=331
+attack success, original_label=9, adversarial_label=3, count=332
+attack success, original_label=3, adversarial_label=7, count=333
+attack success, original_label=6, adversarial_label=3, count=334
+attack success, original_label=6, adversarial_label=3, count=335
+attack success, original_label=9, adversarial_label=3, count=336
+attack success, original_label=3, adversarial_label=6, count=337
+attack success, original_label=8, adversarial_label=3, count=338
+attack success, original_label=0, adversarial_label=3, count=339
+attack success, original_label=7, adversarial_label=3, count=340
+attack success, original_label=2, adversarial_label=3, count=341
+attack success, original_label=6, adversarial_label=3, count=342
+attack success, original_label=2, adversarial_label=3, count=343
+attack success, original_label=5, adversarial_label=3, count=344
+attack success, original_label=8, adversarial_label=3, count=345
+attack success, original_label=5, adversarial_label=3, count=346
+attack success, original_label=4, adversarial_label=3, count=347
+attack success, original_label=6, adversarial_label=3, count=348
+attack success, original_label=8, adversarial_label=3, count=349
+attack success, original_label=9, adversarial_label=3, count=350
+attack success, original_label=9, adversarial_label=3, count=351
+attack success, original_label=1, adversarial_label=3, count=352
+attack success, original_label=0, adversarial_label=3, count=353
+attack success, original_label=2, adversarial_label=3, count=354
+attack success, original_label=2, adversarial_label=3, count=355
+attack success, original_label=7, adversarial_label=3, count=356
+attack success, original_label=3, adversarial_label=9, count=357
+attack success, original_label=2, adversarial_label=3, count=358
+attack success, original_label=8, adversarial_label=3, count=359
+attack success, original_label=0, adversarial_label=3, count=360
+attack success, original_label=9, adversarial_label=3, count=361
+attack success, original_label=5, adversarial_label=3, count=362
+attack success, original_label=8, adversarial_label=3, count=363
+attack success, original_label=1, adversarial_label=3, count=364
+attack success, original_label=9, adversarial_label=3, count=365
+attack success, original_label=4, adversarial_label=3, count=366
+attack success, original_label=1, adversarial_label=3, count=367
+attack success, original_label=3, adversarial_label=5, count=368
+attack success, original_label=8, adversarial_label=3, count=369
+attack success, original_label=1, adversarial_label=3, count=370
+attack success, original_label=4, adversarial_label=3, count=371
+attack success, original_label=7, adversarial_label=3, count=372
+attack success, original_label=9, adversarial_label=3, count=373
+attack success, original_label=4, adversarial_label=3, count=374
+attack success, original_label=2, adversarial_label=3, count=375
+attack success, original_label=7, adversarial_label=3, count=376
+attack success, original_label=0, adversarial_label=3, count=377
+attack success, original_label=7, adversarial_label=3, count=378
+attack success, original_label=0, adversarial_label=3, count=379
+attack success, original_label=6, adversarial_label=3, count=380
+attack success, original_label=6, adversarial_label=3, count=381
+attack success, original_label=9, adversarial_label=3, count=382
+attack success, original_label=0, adversarial_label=3, count=383
+attack success, original_label=9, adversarial_label=3, count=384
+attack success, original_label=2, adversarial_label=3, count=385
+attack success, original_label=8, adversarial_label=3, count=386
+attack success, original_label=7, adversarial_label=3, count=387
+attack success, original_label=2, adversarial_label=3, count=388
+attack success, original_label=2, adversarial_label=3, count=389
+attack success, original_label=5, adversarial_label=3, count=390
+attack success, original_label=1, adversarial_label=3, count=391
+attack success, original_label=2, adversarial_label=3, count=392
+attack success, original_label=6, adversarial_label=3, count=393
+attack success, original_label=2, adversarial_label=3, count=394
+attack success, original_label=9, adversarial_label=3, count=395
+attack success, original_label=6, adversarial_label=3, count=396
+attack success, original_label=2, adversarial_label=3, count=397
+attack success, original_label=3, adversarial_label=0, count=398
+attack success, original_label=0, adversarial_label=3, count=399
+attack success, original_label=3, adversarial_label=5, count=400
+attack success, original_label=9, adversarial_label=3, count=401
+attack success, original_label=8, adversarial_label=3, count=402
+attack success, original_label=7, adversarial_label=3, count=403
+attack success, original_label=8, adversarial_label=3, count=404
+attack success, original_label=8, adversarial_label=3, count=405
+attack success, original_label=4, adversarial_label=3, count=406
+attack success, original_label=0, adversarial_label=3, count=407
+attack success, original_label=1, adversarial_label=3, count=408
+attack success, original_label=8, adversarial_label=3, count=409
+attack success, original_label=2, adversarial_label=3, count=410
+attack success, original_label=7, adversarial_label=3, count=411
+attack success, original_label=9, adversarial_label=3, count=412
+attack success, original_label=3, adversarial_label=1, count=413
+attack success, original_label=6, adversarial_label=3, count=414
+attack success, original_label=1, adversarial_label=3, count=415
+attack success, original_label=9, adversarial_label=3, count=416
+attack success, original_label=0, adversarial_label=3, count=417
+attack success, original_label=7, adversarial_label=3, count=418
+attack success, original_label=3, adversarial_label=5, count=419
+attack success, original_label=7, adversarial_label=3, count=420
+attack success, original_label=4, adversarial_label=3, count=421
+attack success, original_label=5, adversarial_label=3, count=422
+attack success, original_label=0, adversarial_label=3, count=423
+attack success, original_label=0, adversarial_label=3, count=424
+attack success, original_label=2, adversarial_label=3, count=425
+attack success, original_label=9, adversarial_label=3, count=426
+attack success, original_label=3, adversarial_label=1, count=427
+attack success, original_label=4, adversarial_label=3, count=428
+attack success, original_label=0, adversarial_label=3, count=429
+attack success, original_label=6, adversarial_label=3, count=430
+attack success, original_label=2, adversarial_label=3, count=431
+attack success, original_label=5, adversarial_label=3, count=432
+attack success, original_label=3, adversarial_label=1, count=433
+attack success, original_label=7, adversarial_label=3, count=434
+attack success, original_label=3, adversarial_label=5, count=435
+attack success, original_label=7, adversarial_label=3, count=436
+attack success, original_label=2, adversarial_label=3, count=437
+attack success, original_label=5, adversarial_label=3, count=438
+attack success, original_label=3, adversarial_label=0, count=439
+attack success, original_label=1, adversarial_label=3, count=440
+attack success, original_label=1, adversarial_label=3, count=441
+attack success, original_label=4, adversarial_label=3, count=442
+attack success, original_label=9, adversarial_label=3, count=443
+attack success, original_label=9, adversarial_label=3, count=444
+attack success, original_label=5, adversarial_label=3, count=445
+attack success, original_label=7, adversarial_label=3, count=446
+attack success, original_label=5, adversarial_label=3, count=447
+attack success, original_label=0, adversarial_label=3, count=448
+attack success, original_label=2, adversarial_label=3, count=449
+attack success, original_label=2, adversarial_label=3, count=450
+attack success, original_label=2, adversarial_label=3, count=451
+attack success, original_label=9, adversarial_label=3, count=452
+attack success, original_label=7, adversarial_label=3, count=453
+attack success, original_label=3, adversarial_label=6, count=454
+attack success, original_label=9, adversarial_label=3, count=455
+attack success, original_label=4, adversarial_label=3, count=456
+attack success, original_label=3, adversarial_label=8, count=457
+attack success, original_label=5, adversarial_label=3, count=458
+attack success, original_label=4, adversarial_label=3, count=459
+attack success, original_label=6, adversarial_label=3, count=460
+attack success, original_label=5, adversarial_label=3, count=461
+attack success, original_label=6, adversarial_label=3, count=462
+attack success, original_label=1, adversarial_label=3, count=463
+attack success, original_label=4, adversarial_label=3, count=464
+attack success, original_label=3, adversarial_label=2, count=465
+attack success, original_label=4, adversarial_label=3, count=466
+attack success, original_label=4, adversarial_label=3, count=467
+attack success, original_label=3, adversarial_label=9, count=468
+attack success, original_label=7, adversarial_label=3, count=469
+attack success, original_label=8, adversarial_label=3, count=470
+attack success, original_label=3, adversarial_label=1, count=471
+attack success, original_label=7, adversarial_label=3, count=472
+attack success, original_label=8, adversarial_label=3, count=473
+attack success, original_label=0, adversarial_label=3, count=474
+attack success, original_label=5, adversarial_label=3, count=475
+attack success, original_label=7, adversarial_label=3, count=476
+attack success, original_label=6, adversarial_label=3, count=477
+attack success, original_label=0, adversarial_label=3, count=478
+attack success, original_label=5, adversarial_label=3, count=479
+attack success, original_label=4, adversarial_label=3, count=480
+attack success, original_label=8, adversarial_label=3, count=481
+attack success, original_label=6, adversarial_label=3, count=482
+attack success, original_label=8, adversarial_label=3, count=483
+attack success, original_label=5, adversarial_label=3, count=484
+attack success, original_label=5, adversarial_label=3, count=485
+attack success, original_label=9, adversarial_label=3, count=486
+attack success, original_label=9, adversarial_label=3, count=487
+attack success, original_label=9, adversarial_label=3, count=488
+attack success, original_label=5, adversarial_label=3, count=489
+attack success, original_label=0, adversarial_label=3, count=490
+attack success, original_label=1, adversarial_label=3, count=491
+attack success, original_label=0, adversarial_label=3, count=492
+attack success, original_label=8, adversarial_label=3, count=493
+attack success, original_label=1, adversarial_label=3, count=494
+attack success, original_label=1, adversarial_label=3, count=495
+attack success, original_label=8, adversarial_label=3, count=496
+attack success, original_label=0, adversarial_label=3, count=497
+attack success, original_label=2, adversarial_label=3, count=498
+attack success, original_label=2, adversarial_label=3, count=499
+attack success, original_label=0, adversarial_label=3, count=500
+[TEST_DATASET]: fooling_count=500, total_count=500, fooling_rate=1.000000
+jsma attack done
