@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 FGSM tutorial on cifar10 using advbox tool.
 FGSM method is non-targeted attack while FGSMT is targeted attack.
@@ -9,7 +11,12 @@ FGSM method is non-targeted attack while FGSMT is targeted attack.
 import sys
 sys.path.append("..")
 
+
+import matplotlib
+matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
+
 import numpy as np
 import paddle.fluid as fluid
 import paddle.v2 as paddle
@@ -18,9 +25,11 @@ from advbox.adversary import Adversary
 #from advbox.attacks.gradient_method import FGSM
 from advbox.attacks.gradient_method import FGSMT
 from advbox.models.paddle import PaddleModel
-#from tutorials.mnist_model import mnist_cnn_model
+from tutorials.mnist_model import mnist_cnn_model
 #from vgg import vgg_bn_drop
-from resnet import resnet_cifar10
+#from resnet import resnet_cifar10
+
+from PIL import Image
 
 def main():
     """
@@ -30,14 +39,14 @@ def main():
     IMG_NAME = 'img'
     LABEL_NAME = 'label'
 
-    img = fluid.layers.data(name=IMG_NAME, shape=[3, 32, 32], dtype='float32')
+    img = fluid.layers.data(name=IMG_NAME, shape=[1, 28, 28], dtype='float32')
     # gradient should flow
     img.stop_gradient = False
     label = fluid.layers.data(name=LABEL_NAME, shape=[1], dtype='int64')
     
-    #logits = mnist_cnn_model(img)
+    logits = mnist_cnn_model(img)
     #logits = vgg_bn_drop(img)
-    logits = resnet_cifar10(img,32)
+    #logits = resnet_cifar10(img,32)
     
     cost = fluid.layers.cross_entropy(input=logits, label=label)
     avg_cost = fluid.layers.mean(x=cost)
@@ -50,10 +59,12 @@ def main():
 
     BATCH_SIZE = 1
     test_reader = paddle.batch(
-        paddle.dataset.cifar.test10(), batch_size=BATCH_SIZE)
+        paddle.reader.shuffle(
+            paddle.dataset.mnist.test(), buf_size=128 * 10),
+        batch_size=BATCH_SIZE)
 
     fluid.io.load_params(
-        exe, "cifar10/", main_program=fluid.default_main_program())
+        exe, "mnist/", main_program=fluid.default_main_program())
 
     # advbox demo
     m = PaddleModel(
@@ -77,7 +88,7 @@ def main():
         adversary = attack(adversary, **attack_config)
 
         # FGSMT targeted attack
-        #tlabel = 0
+        #tlabel = 8
         #adversary.set_target(is_targeted_attack=True, target_label=tlabel)
         #adversary = attack(adversary, **attack_config)
 
@@ -86,9 +97,28 @@ def main():
             print(
                 'attack success, original_label=%d, adversarial_label=%d, count=%d'
                 % (data[0][1], adversary.adversarial_label, total_count))
-            plt.imshow(adversary.target, cmap='Greys_r')
-            plt.show()
-            #np.save('adv_img', adversary.target)
+
+            adversarial_example=adversary.adversarial_example
+            #print adversarial_example
+
+            #原始数据归一化到(-1,1)之间了 需要还原到(0,255)
+
+            adversarial_example /= 2.
+            adversarial_example += 0.5
+            adversarial_example *= 255.
+
+            adversarial_example=adversarial_example.astype(np.uint8)
+
+            #print adversarial_example
+
+            adversarial_example=np.reshape(adversarial_example,(28,28))
+
+            im = Image.fromarray(adversarial_example)
+
+            filename= "original-%d-adversarial-%d-untargeted-by-fgsm.jpg" % (data[0][1], adversary.adversarial_label)
+
+            im.save("output/"+filename)
+
         else:
             print('attack failed, original_label=%d, count=%d' %
                   (data[0][1], total_count))

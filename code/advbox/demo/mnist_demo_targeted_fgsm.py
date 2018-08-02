@@ -107,11 +107,17 @@ def main():
             adversarial_example += 0.5
             adversarial_example *= 255.
 
-            #im = Image.fromarray(adversarial_example.astype(np.uint8))
+            adversarial_example=adversarial_example.astype(np.uint8)
 
-            #filename= "%d-%d.jpg" % (adversary.original_label,adversary.target_label)
+            #print adversarial_example
 
-            #im.save("output/"+filename)
+            adversarial_example=np.reshape(adversarial_example,(28,28))
+
+            im = Image.fromarray(adversarial_example)
+
+            filename = "original-%d-adversarial-%d-targeted-by-fgsm.jpg" % (data[0][1], adversary.adversarial_label)
+
+            im.save("output/"+filename)
 
         else:
             print('attack failed, original_label=%d, count=%d' %
