@@ -115,7 +115,9 @@ def make_mlp_model(dirname):
     """
     img = fluid.layers.data(name='img', shape=[1, 28, 28], dtype='float32')
     label = fluid.layers.data(name='label', shape=[1], dtype='int64')
+
     logits = mnist_mlp_model(img)
+
     cost = fluid.layers.cross_entropy(input=logits, label=label)
     avg_cost = fluid.layers.mean(x=cost)
     optimizer = fluid.optimizer.Adam(learning_rate=0.01)
@@ -166,8 +168,8 @@ def make_mlp_model(dirname):
 
 
 def main():
-    #make_cnn_model('./mnist_blackbox/cnn')
-    make_mlp_model('./mnist_blackbox/mlp')
+    make_cnn_model('./mnist_blackbox/cnn')
+    #make_mlp_model('./mnist_blackbox/mlp')
 
 
 if __name__ == '__main__':
