@@ -171,6 +171,9 @@ def make_mlp_model(dirname):
             0]))
     fluid.io.save_params(
         exe, dirname=dirname, main_program=fluid.default_main_program())
+
+
+
     print('train mnist mlp model done')
 
 
@@ -179,97 +182,83 @@ def make_cnn_model_visualization(dirname):
     Train the cnn model on mnist datasets
     """
 
-    BATCH_SIZE = 1
-    PASS_NUM = 3
-    ACC_THRESHOLD = 0.98
-    LOSS_THRESHOLD = 10.0
+    batch_size = 64
+    num_epochs = 5
 
-    train_reader = paddle.batch(
-        paddle.reader.shuffle(
-            paddle.dataset.mnist.train(), buf_size=128 * 10),
-        batch_size=BATCH_SIZE)
+    use_cuda = 1
 
-    test_reader = paddle.batch(
-        paddle.reader.shuffle(
-            paddle.dataset.mnist.test(), buf_size=128 * 10),
-        batch_size=BATCH_SIZE)
-
-    def train_program():
-
-        img = fluid.layers.data(name='img', shape=[1, 28, 28], dtype='float32')
-        label = fluid.layers.data(name='label', shape=[1], dtype='int64')
-        logits = mnist_cnn_model(img)
-        cost = fluid.layers.cross_entropy(input=logits, label=label)
-        avg_cost = fluid.layers.mean(x=cost)
-
-        accuracy = fluid.layers.accuracy(input=logits, label=label)
-
-        return [avg_cost,accuracy]
 
     def optimizer_program():
-        return fluid.optimizer.Adam(learning_rate=0.01)
+        return fluid.optimizer.Adam(learning_rate=0.001)
+
+    def train_program():
+        label = fluid.layers.data(name='label', shape=[1], dtype='int64')
+        img = fluid.layers.data(name='img', shape=[1, 28, 28], dtype='float32')
 
 
+        predict =  mnist_mlp_model(img)
 
-    # use CPU
-    place = fluid.CPUPlace()
-    # use GPU
-    # place = fluid.CUDAPlace(0)
+        # Calculate the cost from the prediction and label.
+        cost = fluid.layers.cross_entropy(input=predict, label=label)
+        avg_cost = fluid.layers.mean(cost)
+        acc = fluid.layers.accuracy(input=predict, label=label)
+        return [avg_cost, acc]
 
+    train_reader = paddle.batch(
+        paddle.reader.shuffle(paddle.dataset.mnist.train(), buf_size=500),
+        batch_size=batch_size)
+
+    test_reader = paddle.batch(paddle.dataset.mnist.test(), batch_size=batch_size)
+
+      # set to True if training with GPU
+    place = fluid.CUDAPlace(0) if use_cuda else fluid.CPUPlace()
 
     trainer = fluid.Trainer(
         train_func=train_program, place=place, optimizer_func=optimizer_program)
 
-    feed_order = ['img', 'label']
-
-    # Specify the directory path to save the parameters
+    # Save the parameter into a directory. The Inferencer can load the parameters from it to do infer
     params_dirname = dirname
 
-    # Plot data
-    from paddle.v2.plot import Ploter
-    train_title = "Train cost"
-    test_title = "Test cost"
-    plot_cost = Ploter(train_title, test_title)
+    lists = []
 
-
-    # event_handler to print training and testing info
-    def event_handler_plot(event):
+    def event_handler(event):
         if isinstance(event, fluid.EndStepEvent):
-            if event.step % 10 == 0:  # every 10 batches, record a test cost
-                avg_cost, accuracy = trainer.test(
-                    reader=test_reader, feed_order=feed_order)
-
-                print('\nTrain with Pass {0}, Loss {1:2.2}, Acc {2:2.2}'.format(
-                    event.epoch, avg_cost, accuracy))
-                #plot_cost.plot()
-
-
-            # We can save the trained parameters for the inferences later
-            if params_dirname is not None:
-                trainer.save_params(params_dirname)
+            if event.step % 100 == 0:
+                # event.metrics maps with train program return arguments.
+                # event.metrics[0] will yeild avg_cost and event.metrics[1] will yeild acc in this example.
+                print "step %d, epoch %d, Cost %f Acc %f " % (event.step, event.epoch,event.metrics[0],event.metrics[1])
 
         if isinstance(event, fluid.EndEpochEvent):
-            avg_cost, accuracy = trainer.test(
-                reader=test_reader, feed_order=feed_order)
+            avg_cost, acc = trainer.test(
+                reader=test_reader, feed_order=['img', 'label'])
 
-            print('\nTest with Pass {0}, Loss {1:2.2}, Acc {2:2.2}'.format(
-                event.epoch, avg_cost, accuracy))
-            if params_dirname is not None:
-                trainer.save_params(params_dirname)
+            print("Test with Epoch %d, avg_cost: %s, acc: %s" %
+                  (event.epoch, avg_cost, acc))
 
-    # The training could take up to a few minutes.
+            # save parameters
+            print "save_params"
+            trainer.save_params(params_dirname)
+            lists.append((event.epoch, avg_cost, acc))
+
+
+    # Train the model now
     trainer.train(
+        num_epochs=num_epochs,
+        event_handler=event_handler,
         reader=train_reader,
-        num_epochs=PASS_NUM,
-        event_handler=event_handler_plot,
-        feed_order=feed_order)
+        feed_order=['img', 'label'])
+
+    # find the best pass
+    best = sorted(lists, key=lambda list: float(list[1]))[0]
+    print 'Best pass is %s, testing Avgcost is %s' % (best[0], best[1])
+    print 'The classification accuracy is %.2f%%' % (float(best[2]) * 100)
 
 
 
 
 
 def main():
-    make_cnn_model_visualization('./mnist_blackbox/cnn')
+    make_cnn_model_visualization('./mnist_blackbox/cnn/')
     #make_mlp_model('./mnist_blackbox/mlp')
 
 
