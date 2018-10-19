@@ -1,4 +1,5 @@
 opt/
+doc/
 
 # Python:
 *.py[cod]
