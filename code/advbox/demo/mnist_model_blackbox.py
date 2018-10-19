@@ -135,7 +135,7 @@ def make_mlp_model(dirname):
         input=logits, label=label, total=batch_size)
 
     BATCH_SIZE = 50
-    PASS_NUM = 3
+    PASS_NUM = 5
     ACC_THRESHOLD = 0.98
     LOSS_THRESHOLD = 10.0
     train_reader = paddle.batch(
@@ -184,6 +184,84 @@ def make_cnn_model_visualization(dirname):
 
     batch_size = 64
     num_epochs = 5
+
+    use_cuda = 1
+
+
+    def optimizer_program():
+        return fluid.optimizer.Adam(learning_rate=0.001)
+
+    def train_program():
+        label = fluid.layers.data(name='label', shape=[1], dtype='int64')
+        img = fluid.layers.data(name='img', shape=[1, 28, 28], dtype='float32')
+
+
+        predict =  mnist_cnn_model(img)
+
+        # Calculate the cost from the prediction and label.
+        cost = fluid.layers.cross_entropy(input=predict, label=label)
+        avg_cost = fluid.layers.mean(cost)
+        acc = fluid.layers.accuracy(input=predict, label=label)
+        return [avg_cost, acc]
+
+    train_reader = paddle.batch(
+        paddle.reader.shuffle(paddle.dataset.mnist.train(), buf_size=500),
+        batch_size=batch_size)
+
+    test_reader = paddle.batch(paddle.dataset.mnist.test(), batch_size=batch_size)
+
+      # set to True if training with GPU
+    place = fluid.CUDAPlace(0) if use_cuda else fluid.CPUPlace()
+
+    trainer = fluid.Trainer(
+        train_func=train_program, place=place, optimizer_func=optimizer_program)
+
+    # Save the parameter into a directory. The Inferencer can load the parameters from it to do infer
+    params_dirname = dirname
+
+    lists = []
+
+    def event_handler(event):
+        if isinstance(event, fluid.EndStepEvent):
+            if event.step % 100 == 0:
+                # event.metrics maps with train program return arguments.
+                # event.metrics[0] will yeild avg_cost and event.metrics[1] will yeild acc in this example.
+                print "step %d, epoch %d, Cost %f Acc %f " % (event.step, event.epoch,event.metrics[0],event.metrics[1])
+
+        if isinstance(event, fluid.EndEpochEvent):
+            avg_cost, acc = trainer.test(
+                reader=test_reader, feed_order=['img', 'label'])
+
+            print("Test with Epoch %d, avg_cost: %s, acc: %s" %
+                  (event.epoch, avg_cost, acc))
+
+            # save parameters
+            print "save_params"
+            trainer.save_params(params_dirname)
+            lists.append((event.epoch, avg_cost, acc))
+
+
+    # Train the model now
+    trainer.train(
+        num_epochs=num_epochs,
+        event_handler=event_handler,
+        reader=train_reader,
+        feed_order=['img', 'label'])
+
+    # find the best pass
+    best = sorted(lists, key=lambda list: float(list[1]))[0]
+    print 'Best pass is %s, testing Avgcost is %s' % (best[0], best[1])
+    print 'The classification accuracy is %.2f%%' % (float(best[2]) * 100)
+
+
+
+def make_mlp_model_visualization(dirname):
+    """
+    Train the cnn model on mnist datasets
+    """
+
+    batch_size = 64
+    num_epochs = 10
 
     use_cuda = 1
 
@@ -253,13 +331,10 @@ def make_cnn_model_visualization(dirname):
     print 'Best pass is %s, testing Avgcost is %s' % (best[0], best[1])
     print 'The classification accuracy is %.2f%%' % (float(best[2]) * 100)
 
-
-
-
-
 def main():
-    make_cnn_model_visualization('./mnist_blackbox/cnn/')
+    #make_cnn_model_visualization('./mnist_blackbox/cnn/')
     #make_mlp_model('./mnist_blackbox/mlp')
+    make_mlp_model_visualization('./mnist_blackbox/mlp/')
 
 
 if __name__ == '__main__':
