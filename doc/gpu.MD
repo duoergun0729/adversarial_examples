@@ -50,3 +50,11 @@
     pip install ipykernel
     python -m ipykernel install --user --name tensorflow--display-name "Python (myenv)"
 
+# 代码自动补齐
+
+
+    pip install jupyter_contrib_nbextensions
+    jupyter contrib nbextension install --user
+    pip install --user jupyter_nbextensions_configurator
+    jupyter nbextensions_configurator enable --user
+    
