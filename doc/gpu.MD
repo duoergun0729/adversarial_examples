@@ -23,9 +23,9 @@
   
   cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
 
-  #define CUDNN_MAJOR 7
-  #define CUDNN_MINOR 4
-  #define CUDNN_PATCHLEVEL 1
+  CUDNN_MAJOR 7
+  CUDNN_MINOR 4
+  CUDNN_PATCHLEVEL 1
 
 # 推荐使用cuda 9和cuDNN 7，安装最新的tensorflow-gpu版本1.11。
 
