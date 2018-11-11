@@ -58,3 +58,9 @@
     pip install --user jupyter_nbextensions_configurator
     jupyter nbextensions_configurator enable --user
     
+  启动服务后勾选
+  
+  Hinterland
+
+    c.NotebookApp.ip='*'服务器
+    c.NotebookApp.ip='*'
