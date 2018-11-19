@@ -1,5 +1,6 @@
 opt/
 doc/
+thirdpart
 
 # Python:
 *.py[cod]
