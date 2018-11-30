@@ -1,11 +1,42 @@
 #coding=utf-8
 
-%matplotlib inline
-
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import re
+
+def show_d(img,img_adv):
+    l0 = int(99*len(np.where(np.abs(img[0] - img_adv[0])>0.5)[0]) / (224*224*3)) + 1   
+    l1 = int(99*np.sum(np.abs(img[0] - img_adv[0])) / np.sum(np.abs(img[0]))) + 1
+    l2 = int(99*np.linalg.norm(img[0] - img_adv[0]) / np.linalg.norm(img[0])) + 1 
+    linf = int(99*np.max(np.abs(img[0] - img_adv[0])) / 255) + 1
+    print('Noise L_0 norm: %d%%' % l0)
+    print('Noise L_2 norm: %d%%' % l2)
+    print('Noise L_inf norm: %d%%' % linf)
+    
+    plt.figure()
+        
+    plt.subplot(131)
+    plt.title('Original')
+    plt.imshow(img[0])
+    plt.axis('off')
+
+    plt.subplot(132)
+    plt.title('Adversarial')
+    plt.imshow(img_adv[0])
+    plt.axis('off')
+
+    plt.subplot(133)
+    plt.title('Adversarial-Original')
+    difference = img_adv - img
+    
+    difference=difference / abs(difference).max()/2.0+0.5
+    
+    plt.imshow(difference[0],cmap=plt.cm.gray)
+    plt.axis('off')
+    plt.tight_layout()
+    plt.show()
+
 
 def show_images_diff(original_img,original_label,adversarial_img,adversarial_label):
     plt.figure()
