@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import re
 
-def show_d(img,img_adv):
+def show_d(img,img_adv,show=True):
     #(224*224*3)
     size=(img.shape[0])*(img.shape[1])*(img.shape[2])*(img.shape[3])
     l0 = int(99*len(np.where(np.abs(img[0] - img_adv[0])>0.5)[0]) / size ) + 1   
@@ -18,28 +18,29 @@ def show_d(img,img_adv):
     
     #print(l0,l2,linf)
     
-    plt.figure()
-        
-    plt.subplot(131)
-    plt.title('Original')
-    plt.imshow(img[0])
-    plt.axis('off')
+    if show:
+        plt.figure()
 
-    plt.subplot(132)
-    plt.title('Adversarial')
-    plt.imshow(img_adv[0])
-    plt.axis('off')
+        plt.subplot(131)
+        plt.title('Original')
+        plt.imshow(img[0])
+        plt.axis('off')
 
-    plt.subplot(133)
-    plt.title('Adversarial-Original')
-    difference = img_adv - img
-    
-    difference=difference / abs(difference).max()/2.0+0.5
-    
-    plt.imshow(difference[0],cmap=plt.cm.gray)
-    plt.axis('off')
-    plt.tight_layout()
-    plt.show()
+        plt.subplot(132)
+        plt.title('Adversarial')
+        plt.imshow(img_adv[0])
+        plt.axis('off')
+
+        plt.subplot(133)
+        plt.title('Adversarial-Original')
+        difference = img_adv - img
+
+        difference=difference / abs(difference).max()/2.0+0.5
+
+        plt.imshow(difference[0],cmap=plt.cm.gray)
+        plt.axis('off')
+        plt.tight_layout()
+        plt.show()
     
     return (l0,l2,linf)
 
