@@ -16,6 +16,8 @@ def show_d(img,img_adv):
     print('Noise L_2 norm: %d%%' % l2)
     print('Noise L_inf norm: %d%%' % linf)
     
+    #print(l0,l2,linf)
+    
     plt.figure()
         
     plt.subplot(131)
@@ -38,6 +40,8 @@ def show_d(img,img_adv):
     plt.axis('off')
     plt.tight_layout()
     plt.show()
+    
+    return (l0,l2,linf)
 
 
 def show_images_diff(original_img,original_label,adversarial_img,adversarial_label):
