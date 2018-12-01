@@ -6,7 +6,9 @@ import tensorflow as tf
 import re
 
 def show_d(img,img_adv):
-    l0 = int(99*len(np.where(np.abs(img[0] - img_adv[0])>0.5)[0]) / (224*224*3)) + 1   
+    #(224*224*3)
+    size=(img.shape[0])*(img.shape[1])*(img.shape[2])*(img.shape[3])
+    l0 = int(99*len(np.where(np.abs(img[0] - img_adv[0])>0.5)[0]) / size ) + 1   
     l1 = int(99*np.sum(np.abs(img[0] - img_adv[0])) / np.sum(np.abs(img[0]))) + 1
     l2 = int(99*np.linalg.norm(img[0] - img_adv[0]) / np.linalg.norm(img[0])) + 1 
     linf = int(99*np.max(np.abs(img[0] - img_adv[0])) / 255) + 1
