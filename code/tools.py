@@ -5,18 +5,33 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import re
 
+#输入格式示例为：[None,224,244,3] 归一化后的数据
 def show_d(img,img_adv,show=True):
     #(224*224*3)
     size=(img.shape[0])*(img.shape[1])*(img.shape[2])*(img.shape[3])
-    l0 = int(99*len(np.where(np.abs(img[0] - img_adv[0])>0.5)[0]) / size ) + 1   
-    l1 = int(99*np.sum(np.abs(img[0] - img_adv[0])) / np.sum(np.abs(img[0]))) + 1
-    l2 = int(99*np.linalg.norm(img[0] - img_adv[0]) / np.linalg.norm(img[0])) + 1 
-    linf = int(99*np.max(np.abs(img[0] - img_adv[0])) / 255) + 1
-    print('Noise L_0 norm: %d%%' % l0)
-    print('Noise L_2 norm: %d%%' % l2)
-    print('Noise L_inf norm: %d%%' % linf)
     
-    #print(l0,l2,linf)
+    print('Image Size {} Shape {}'.format(size,img.shape) )
+    
+    #计算该变量
+    deta=img[0] - img_adv[0]
+    
+    #计算绝对量
+    _l0 = len(np.where(np.abs(deta)>0.0)[0])   
+    _l1 = np.sum(np.abs(deta))
+    _l2 = np.linalg.norm(deta) 
+    _linf = np.max(np.abs(deta))
+    #计算相对量
+    #l0 = int(99*len(np.where(np.abs(img[0] - img_adv[0])>0.5)[0]) / size ) + 1
+    l0=int(_l0*99/size)+1
+    l1 = int(99*np.sum(np.abs(img[0] - img_adv[0])) / np.sum(np.abs(img[0]))) + 1
+    #l2 = int(99*np.linalg.norm(img[0] - img_adv[0]) / np.linalg.norm(img[0])) + 1 
+    l2=int(99*_l2 / np.linalg.norm(img[0])) + 1 
+    #linf = int(99*np.max(np.abs(img[0] - img_adv[0])) / 255) + 1
+    linf = int(99*_linf / 255) + 1
+    print('Noise L_0 norm: {} {}%'.format(_l0,l0) )
+    print('Noise L_2 norm: {} {}%'.format(_l2,l2) )
+    print('Noise L_inf norm: {} {}%'.format(_linf,linf) )
+
     
     if show:
         plt.figure()
