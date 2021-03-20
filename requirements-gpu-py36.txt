@@ -15,7 +15,7 @@ ipykernel==5.1.0
 ipython==7.0.1
 ipython-genutils==0.2.0
 jedi==0.13.1
-Jinja2==2.10
+Jinja2==2.11.3
 jsonschema==2.6.0
 jupyter-client==5.2.3
 jupyter-contrib-core==0.3.3
