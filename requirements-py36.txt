@@ -63,7 +63,7 @@ python-dateutil==2.7.3
 python-hostlist==1.18
 pytz==2018.5
 PyWavelets==1.0.1
-PyYAML==3.13
+PyYAML==5.4
 pyzmq==17.1.2
 requests==2.20.0
 sci==0.0.4
