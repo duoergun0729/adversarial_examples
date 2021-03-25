@@ -48,7 +48,7 @@ ptyprocess==0.6.0
 Pygments==2.2.0
 pyparsing==2.2.2
 python-dateutil==2.7.3
-PyYAML==3.13
+PyYAML==5.4
 pyzmq==17.1.2
 Send2Trash==1.5.0
 simplegeneric==0.8.1
