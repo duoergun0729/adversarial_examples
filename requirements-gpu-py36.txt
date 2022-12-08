@@ -3,7 +3,7 @@ appnope==0.1.0
 astor==0.7.1
 backcall==0.1.0
 bleach==3.0.0
-certifi==2018.10.15
+certifi==2022.12.7
 cycler==0.10.0
 decorator==4.3.0
 defusedxml==0.5.0
